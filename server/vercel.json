@@ -1,23 +1,26 @@
 {
   "version": 2,
-  "name": "Blinkit",
+  "name": "blinkit",
   "builds": [
     {
-      "src": "../client/package.json", 
-      "use": "@vercel/static-build"
+      "src": "index.js",
+      "use": "@vercel/node"
     },
     {
-      "src": "index.js", 
-      "use": "@vercel/node"
+      "src": "../client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "../client/build"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)", 
+      "src": "/api/(.*)",
       "dest": "index.js"
     },
     {
-      "src": "/(.*)", 
+      "src": "/(.*)",
       "dest": "../client/build/$1"
     }
   ]
