@@ -3,22 +3,22 @@
   "name": "Blinkit",
   "builds": [
     {
-      "src": "client/package.json", 
+      "src": "../client/package.json", 
       "use": "@vercel/static-build"
     },
     {
-      "src": "server/index.js", 
+      "src": "index.js", 
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)", 
-      "dest": "server/$1"
+      "dest": "index.js"
     },
     {
       "src": "/(.*)", 
-      "dest": "client/$1"
+      "dest": "../client/build/$1"
     }
   ]
 }
